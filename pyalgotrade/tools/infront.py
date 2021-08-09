@@ -80,6 +80,8 @@ def build_feed(tickers=[], start_date=None, end_date=None,
 
     for file in files_in_storage:
         ticker = format_ticker_from_path(file)
+        if file[0:len(storage)] != storage:
+            file = storage + file
         ret.addBarsFromCSV(ticker, file)
 
     return ret
